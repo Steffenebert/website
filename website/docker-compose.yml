@@ -1,0 +1,14 @@
+services:
+  nginx:
+    image: nginx:1.20
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nginx.rule=Host(`steffenebert.codes`)"
+    networks:
+      - traefik_web
+    volumes:
+      - ./src:/usr/share/nginx/html
+
+networks:
+  traefik_web:
+    external: true
